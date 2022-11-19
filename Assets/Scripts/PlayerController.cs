@@ -1,20 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum SphereState
+{
+    IS_ON_GROUND, IS_IN_AIR
+}
 
 public class PlayerController : MonoBehaviour
 {
+    private SphereState sphereState;
+    public SphereState SphereState { private get => sphereState; set => sphereState = value; }
+
     private Rigidbody playerRigidBody;
+
     [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
 
     private void Awake()
     {
         playerRigidBody = GetComponent<Rigidbody>();
+        SphereState = SphereState.IS_IN_AIR;
     }
-    void Update()
+
+    private void FixedUpdate()
     {
         SphereMovement();
     }
+
+    void Update()
+    {
+        SphereJump();
+    }
+
     void SphereMovement()
     {
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
@@ -32,6 +49,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             playerRigidBody.AddForce(Vector3.left * speed);
+        }
+    }
+
+    void SphereJump()
+    {
+        if (SphereState == SphereState.IS_ON_GROUND && Input.GetKeyDown(KeyCode.Space))
+        {
+            playerRigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
     }
 }
