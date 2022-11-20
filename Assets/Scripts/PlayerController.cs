@@ -9,13 +9,14 @@ public enum SphereState
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private SphereState sphereState;
-    public SphereState SphereState { private get => sphereState; set => sphereState = value; }
+    public SphereState SphereState { get => sphereState; set => sphereState = value; }
 
     private Rigidbody playerRigidBody;
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float boostStrength;
+
+    [SerializeField] private Jetpack jetpack;
 
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
         Jump();
     }
 
-    void Movement()
+    private void Movement()
     {
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
         {
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Jump()
+    private void Jump()
     {
         if (SphereState == SphereState.IS_ON_GROUND && Input.GetKeyDown(KeyCode.Space))
         {
@@ -58,11 +59,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void JetpackJump()
+    private void JetpackJump()
     {
         if (SphereState == SphereState.IS_IN_AIR && Input.GetKey(KeyCode.Space))
         {
-            playerRigidBody.AddForce(Vector3.up * boostStrength, ForceMode.Force);
+            playerRigidBody.AddForce(Vector3.up * jetpack.BoostStrength, ForceMode.Force);
         }
     }
 }
