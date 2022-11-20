@@ -432,6 +432,7 @@ MonoBehaviour:
   sphereState: 0
   speed: 4
   jumpForce: 5
+  boostStrength: 1.9
 --- !u!114 &1546245435
 MonoBehaviour:
   m_ObjectHideFlags: 0
