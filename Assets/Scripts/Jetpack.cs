@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+public enum JetpackState
+{
+    JETPACK_ON, JETPACK_OFF
+}
 public class Jetpack : MonoBehaviour
 {
+    private JetpackState jetpackState;
+    public JetpackState JetpackState { private get => jetpackState; set => jetpackState = value; }
+
     [SerializeField] private Slider jetpackSlider;
     [SerializeField] private PlayerController playerController;
 
@@ -18,6 +24,7 @@ public class Jetpack : MonoBehaviour
     private void Awake()
     {
         SetMaxFuel();
+        JetpackState = JetpackState.JETPACK_OFF;
     }
 
     private void Update()
@@ -34,13 +41,13 @@ public class Jetpack : MonoBehaviour
 
     private void FuelLoad()
     {
-        if (playerController.SphereState == SphereState.IS_ON_GROUND)
+        if (playerController.SphereState == SphereState.IS_ON_GROUND && fuelAmount < maxFuelAmount)
             fuelAmount += rechargeRate * Time.deltaTime;
     }
 
     private void FuelDrain()
     {
-        if (playerController.SphereState == SphereState.IS_IN_AIR)
+        if (JetpackState == JetpackState.JETPACK_ON && fuelAmount > 0f)
             fuelAmount -= drainRate * Time.deltaTime;
     }
 
