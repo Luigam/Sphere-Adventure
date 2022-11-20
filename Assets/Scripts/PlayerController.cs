@@ -8,7 +8,7 @@ public enum SphereState
 
 public class PlayerController : MonoBehaviour
 {
-    private SphereState sphereState;
+    [SerializeField] private SphereState sphereState;
     public SphereState SphereState { get => sphereState; set => sphereState = value; }
 
     private Rigidbody playerRigidBody;
