@@ -832,10 +832,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8681f413f5ca44988930b16e35afa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jetpack: {fileID: 1704643893}
   sphereState: 0
   speed: 4
   jumpForce: 5
-  jetpack: {fileID: 1704643893}
 --- !u!114 &1546245435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,6 +859,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1565153238}
   - component: {fileID: 1565153239}
+  - component: {fileID: 1565153240}
+  - component: {fileID: 1565153241}
   m_Layer: 5
   m_Name: FuelSlider
   m_TagString: Untagged
@@ -940,6 +942,42 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &1565153240
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565153237}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e4efd6495c649743a8ec3bb32746531, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1565153241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565153237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154cd680ae8390b4b93b218fd15d1d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 1546245434}
+  jetpack: {fileID: 1704643893}
+  fuelSliderBackground: {fileID: 752970458}
+  fuelSliderFill: {fileID: 333803955}
 --- !u!1 &1570628167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1081,8 +1119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8209fd186e60624786aea438e5c2182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jetpackSlider: {fileID: 1565153239}
   playerController: {fileID: 1546245434}
+  jetpackSlider: {fileID: 1565153239}
   rechargeRate: 1
   fuelAmount: 300
   boostStrength: 1.9

@@ -5,6 +5,7 @@ using UnityEngine;
 public class JumpPad : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
+
     private Rigidbody playerRigidBody;
 
     [SerializeField] private float jumpForce;
