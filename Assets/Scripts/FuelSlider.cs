@@ -16,28 +16,23 @@ public class FuelSlider : MonoBehaviour
         SetVisibilityOnScreen();
     }
 
-    bool SetVisibilityOnScreen()
+    void SetVisibilityOnScreen()
     {
         if (playerController.SphereState == SphereState.IS_ON_GROUND && jetpack.IsFuelTankFull())
         {
             SetImageTransparency(fuelSliderBackground, 0);
             SetImageTransparency(fuelSliderFill, 0);
-            return true;
         }
-        if (playerController.SphereState == SphereState.IS_ON_GROUND && !jetpack.IsFuelTankFull())
+        else if (playerController.SphereState == SphereState.IS_ON_GROUND && !jetpack.IsFuelTankFull())
         {
             SetImageTransparency(fuelSliderBackground, 1);
             SetImageTransparency(fuelSliderFill, 1);
-            return true;
         }
-        if (playerController.SphereState == SphereState.IS_IN_AIR)
+        else if (playerController.SphereState == SphereState.IS_IN_AIR)
         {
             SetImageTransparency(fuelSliderBackground, 1);
             SetImageTransparency(fuelSliderFill, 1);
-            return true;
         }
-
-        return false;
     }
 
     void SetImageTransparency(Image image, int transparency)
