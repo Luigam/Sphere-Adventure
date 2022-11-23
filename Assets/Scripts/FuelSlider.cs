@@ -16,7 +16,7 @@ public class FuelSlider : MonoBehaviour
         SetVisibilityOnScreen();
     }
 
-    void SetVisibilityOnScreen()
+    private void SetVisibilityOnScreen()
     {
         if (playerController.SphereState == SphereState.IS_ON_GROUND && jetpack.IsFuelTankFull())
         {
@@ -35,7 +35,7 @@ public class FuelSlider : MonoBehaviour
         }
     }
 
-    void SetImageTransparency(Image image, int transparency)
+    private void SetImageTransparency(Image image, int transparency)
     {
         Color color = image.color;
         color.a = transparency;
